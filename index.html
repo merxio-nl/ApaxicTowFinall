@@ -211,20 +211,9 @@
       display: flex;
       align-items: flex-end;
       background-color: #000;
-      /* background moved to ::before for scroll-zoom effect */
+      /* moved to ::before */
     }
-    .hero::before {
-      content: "";
-      position: absolute; inset: 0;
-      background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.7)), url('hero.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      transform: scale(var(--hero-scale, 1.06));
-      transform-origin: center;
-      transition: transform .22s ease-out;
-      z-index: 0;
-    }
+    .hero::before { content:''; position:absolute; inset:0; background-image: linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.7)), url('hero.jpg'); background-size: cover; background-position:center; background-repeat:no-repeat; transform: scale(var(--hero-scale,1.06)); transform-origin:center; transition: transform .22s ease-out; z-index:0; }
     .hero * { position: relative; z-index: 1; }
     }
 
@@ -282,44 +271,23 @@
       border: 2px solid #000;
     }
 
-
+    
     .cta-stack {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       gap: .55rem;
     }
-    .call-btn {
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: .2rem;
-      padding: 1rem 1.3rem;
-      font-size: 1.05rem;
-    }
+    .call-btn { display: inline-flex; flex-direction: column; align-items: center; text-align: center; gap: .2rem; padding: 1rem 1.3rem; font-size: 1.05rem; }
     .call-btn .call-title { font-weight: 700; }
     .call-btn .call-number { font-weight: 800; font-size: 1.05rem; }
+    .wa-btn { background-color: #25D366; color:#fff; font-weight:600; font-size:.95rem; border-radius:.55rem; padding:.7rem 1rem; text-decoration:none; display:inline-flex; align-items:center; gap:.5rem; box-shadow:0 12px 30px rgba(0,0,0,.45); border:2px solid #138f4a; }
     .nowrap { white-space: nowrap; }
-    .wa-btn {
-      background-color: #25D366;
-      color: #fff;
-      font-weight: 600;
-      font-size: .95rem;
-      border-radius: .55rem;
-      padding: .7rem 1rem;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.45);
-      border: 2px solid #138f4a;
-    }
-    .hero-inner { padding-bottom: 4rem; }
-    @media (min-height: 700px) {
-      .hero-inner { padding-bottom: 5rem; }
-    }
-
+    
+@media (min-width: 1024px){
+  .hero { align-items: center; }
+  .hero-inner { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+}
 
     /* SERVICES */
     .services {
@@ -735,7 +703,10 @@
     .about-photo-box:nth-child(4) {
       transition-delay: .4s;
     }
-  </style>
+  
+.nav-dropdown .call-btn { display:flex; flex-direction:column; align-items:center; gap:.25rem; }
+
+</style>
 </head>
 
 <body>
@@ -765,7 +736,8 @@
     </div>
 
     <a class="nav-call-btn" href="tel:+12242249240">
-      Call Now: +1 (224) 224-9240
+      Call Now:
+            <span class="nowrap">+1 (224) 224-9240</span>
     </a>
   </div>
 
@@ -786,6 +758,8 @@
 
       <div class="cta-stack">
         <a class="call-btn" href="tel:+12242249240">
+        Call Now:
+            <span class="nowrap">+1 (224) 224-9240</span>
           <span class="call-title">Call Now</span>
           <span class="call-number nowrap">+1 (224) 224-9240</span>
         </a>
@@ -1124,8 +1098,10 @@ Ask for a quote by phone.
         </div>
 
         <div class="mini-cta">
-          <a class="call-btn" href="tel:+12242249240">
-            Call Now: +1 (224) 224-9240
+          <div class="cta-stack">
+        <a class="call-btn" href="tel:+12242249240">
+            Call Now:
+            <span class="nowrap">+1 (224) 224-9240</span>
           </a>
         </div>
 
@@ -1162,27 +1138,12 @@ Ask for a quote by phone.
 
   <script>
     // HERO fade-in on load
-    // and hero zoom-out on scroll
     window.addEventListener('load', () => {
       const hero = document.getElementById('heroContent');
-      const heroSection = document.querySelector('.hero');
       if (hero) {
         requestAnimationFrame(() => {
           hero.classList.add('ready');
         });
-      }
-      // init zoom value
-      if (heroSection) {
-        const update = () => {
-          const rect = heroSection.getBoundingClientRect();
-          const h = Math.max(rect.height, 1);
-          const progress = Math.min(Math.max(window.scrollY / h, 0), 1);
-          const scale = 1.06 - progress * 0.06; // 1.06 → 1.00
-          heroSection.style.setProperty('--hero-scale', scale.toFixed(3));
-        };
-        update();
-        window.addEventListener('scroll', update, { passive: true });
-        window.addEventListener('resize', update);
       }
     });
 
