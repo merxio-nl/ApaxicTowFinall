@@ -706,6 +706,19 @@
   
 .nav-dropdown .call-btn { display:flex; flex-direction:column; align-items:center; gap:.25rem; }
 
+
+@media (min-width: 1024px){
+  .hero { align-items: center; }              /* vertical center */
+  .hero-inner { 
+    padding-top: 3.5rem; 
+    padding-bottom: 3.5rem; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;                      /* horizontal center of content */
+    text-align: center;                       /* center text & buttons */
+  }
+}
+
 </style>
 </head>
 
@@ -758,8 +771,6 @@
 
       <div class="cta-stack">
         <a class="call-btn" href="tel:+12242249240">
-        Call Now:
-            <span class="nowrap">+1 (224) 224-9240</span>
           <span class="call-title">Call Now</span>
           <span class="call-number nowrap">+1 (224) 224-9240</span>
         </a>
@@ -1100,9 +1111,9 @@ Ask for a quote by phone.
         <div class="mini-cta">
           <div class="cta-stack">
         <a class="call-btn" href="tel:+12242249240">
-            Call Now:
-            <span class="nowrap">+1 (224) 224-9240</span>
-          </a>
+          <span class="call-title">Call Now</span>
+          <span class="call-number nowrap">+1 (224) 224-9240</span>
+        </a>
         </div>
 
         <div class="insta-discount reveal">
