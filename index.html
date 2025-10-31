@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Apaxic LLC Towing | Bonney Lake, WA</title>
   <meta name="description" content="Local towing and roadside assistance. Based in Bonney Lake, WA. Serving up to 200 miles around the Seattle area. Call now: +1 (224) 224-9240." />
 
@@ -907,6 +907,20 @@
     font-weight: 600 !important;             /* толщина как просили */
   }
   .call-number{ white-space: nowrap !important; }
+}
+
+
+/* === v14.4: Mobile safe-area & bottom spacing fix (iOS Safari) === */
+@media (max-width: 767.98px){
+  .hero-inner{
+    /* keep content near bottom, but never under Safari bottom bar */
+    min-height: 100vh !important;
+    padding-top: 14vh !important; /* немного меньше воздуха сверху */
+    padding-bottom: calc(7vh + env(safe-area-inset-bottom, 16px)) !important;
+  }
+  .cta-stack{
+    margin-top: 1.25rem !important;
+  }
 }
 
 </style>
