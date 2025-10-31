@@ -795,11 +795,23 @@
 }
 
 
-/* Gallery images */
-.photo-grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1.25rem; }
-.photo-card { background: linear-gradient(#eee,#ddd); border-radius: .8rem; overflow: hidden; box-shadow: 0 16px 30px rgba(0,0,0,.1); height: 180px; }
-@media (min-width: 768px){ .photo-card{ height: 200px; } }
-@media (min-width: 1024px){ .photo-card{ height: 220px; } }
+/* About / Photos grid */
+.about-photos{
+  display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1.25rem;
+}
+.about-photo-box{
+  background: linear-gradient(#eee,#ddd);
+  border-radius: .8rem;
+  overflow: hidden;
+  box-shadow: 0 16px 30px rgba(0,0,0,.08);
+  height: 180px;
+  display: block;
+}
+.about-photo-box img{
+  width:100%; height:100%; object-fit: cover; display:block;
+}
+@media (min-width: 768px){ .about-photo-box{ height: 200px; } }
+@media (min-width: 1024px){ .about-photo-box{ height: 220px; } }
 
 </style>
 </head>
@@ -1146,10 +1158,10 @@ Ask for a quote by phone.
         </div>
 
         <div class="about-photos">
-          <div class="about-photo-box reveal">Photo: tow truck on call</div>
-          <div class="about-photo-box reveal">Photo: loaded vehicle</div>
-          <div class="about-photo-box reveal">Photo: recovery/winch</div>
-          <div class="about-photo-box reveal">Photo: branded door / APAXIC LLC</div>
+          <div class="about-photo-box reveal"><img src="gallery-1.jpg" alt="Tow truck with classic car" loading="lazy"/></div>
+          <div class="about-photo-box reveal"><img src="gallery-2.jpg" alt="Loaded Mercedes Sprinter" loading="lazy"/></div>
+          <div class="about-photo-box reveal"><img src="gallery-3.jpg" alt="Recovery Jeep on flatbed" loading="lazy"/></div>
+          <div class="about-photo-box reveal"><img src="gallery-4.jpg" alt="Mercedes on flatbed" loading="lazy"/></div>
         </div>
       </div>
     </div>
