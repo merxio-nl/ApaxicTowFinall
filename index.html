@@ -852,6 +852,18 @@
   .call-number{ white-space: nowrap; }
 }
 
+
+/* === MOBILE HERO SPACING ADJUSTMENT (v14.1) === */
+@media (max-width: 767.98px){
+  .hero-inner{
+    padding-top: calc(env(safe-area-inset-top, 0px) + 5vh) !important;
+    padding-bottom: 6vh !important;
+  }
+  .cta-stack{
+    margin-top: 1.75rem !important;
+  }
+}
+
 </style>
 </head>
 
