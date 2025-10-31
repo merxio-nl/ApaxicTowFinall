@@ -923,6 +923,26 @@
   }
 }
 
+
+/* === v14.5: raise content slightly + compact badge width on mobile === */
+@media (max-width: 767.98px){
+  .hero-inner{
+    /* push content a bit higher: add more bottom spacing while respecting safe area */
+    padding-bottom: calc(8.5vh + env(safe-area-inset-bottom, 16px)) !important;
+  }
+  /* Make the yellow pill not stretch full width */
+  .hero-inner .hero-badge,
+  .hero-inner .badge,
+  .hero-inner .chip,
+  .hero-inner .pill{
+    display: inline-block !important;
+    max-width: 90% !important;
+    width: auto !important;
+    margin-left: 5vw !important;
+    margin-right: 5vw !important;
+  }
+}
+
 </style>
 </head>
 
