@@ -966,6 +966,24 @@
   }
 }
 
+
+/* === v14.7: force badge to content-width on mobile (robust selector) === */
+@media (max-width: 767.98px){
+  .hero .hero-inner :is(.hero-badge, .badge, .chip, .pill, .label, .location, [class*="badge"], [class*="pill"], [class*="chip"], [class*="label"], [class*="tag"]){
+    display: inline-flex !important;
+    width: auto !important;
+    max-width: 88% !important;
+    align-self: flex-start !important;
+    margin-left: 5vw !important;
+    margin-right: auto !important;
+    padding: 6px 14px !important;
+    border-radius: 10px !important;
+    line-height: 1.1 !important;
+    font-size: 14px !important;
+    box-sizing: border-box !important;
+  }
+}
+
 </style>
 </head>
 
