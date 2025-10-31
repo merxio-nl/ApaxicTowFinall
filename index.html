@@ -133,24 +133,21 @@
     
     .nav-dropdown {
       position: fixed;
-      inset: 0;
-      z-index: 9998;
-      background: rgba(0,0,0,0.45);
-      display: none;
-    }
-    .nav-dropdown.active { display: block; }
-    .nav-dropdown .nav-panel {
-      position: absolute;
       top: 1rem;
       right: 1rem;
+      z-index: 9998;
       background: #1a1a1a;
       color: #fff;
       border-radius: .8rem;
       border: 2px solid #000;
-      min-width: 220px;
-      max-width: 280px;
+      min-width: 200px;
+      max-width: 250px;
       box-shadow: 0 20px 40px rgba(0,0,0,0.8);
       padding: 1rem;
+      display: none;
+    }
+    .nav-dropdown.active {
+      display: block;
     }
     .nav-dropdown .nav-header {
       display: flex;
@@ -756,46 +753,22 @@
 }
 
 
-/* Mobile/Tablet default: left-aligned hero */
-.hero-inner { text-align: left; }
-.hero-title, .hero-sub { margin-left: 0; margin-right: auto; }
-.cta-stack { align-items: flex-start; }
-
-
-@media (min-width: 1024px){
-  .hero{ display:flex; align-items:center; justify-content:center; }
-  .hero-inner{ 
-    width: min(100%, 980px);
-    display:flex; 
-    flex-direction:column; 
-    align-items:center; 
-    text-align:center;
-    margin: 0 auto;
-  }
-  .hero-title, .hero-sub { 
-    max-width: 900px; 
-    margin-left:auto; 
-    margin-right:auto; 
-  }
-  .cta-stack{ align-items: center; }
+/* Backdrop overlay for nav; closes menu on click */
+.nav-backdrop{
+  position: fixed;
+  inset: 0;
+  z-index: 9997;
+  background: rgba(0,0,0,0.45);
+  display: none;
 }
+.nav-backdrop.active{ display:block; }
 
 
-/* Phones & tablets: push hero content higher */
+/* Phones & tablets: left-aligned + higher hero content */
 @media (max-width: 1023.98px){
-  .hero{ align-items: flex-start; } /* anchor to top */
-  .hero-inner{
-    padding-top: calc(env(safe-area-inset-top, 0px) + 10vh);
-    padding-bottom: 1.75rem; /* less bottom padding so CTA not too low */
-  }
-  /* keep left alignment */
+  .hero{ align-items: flex-start; }
+  .hero-inner{ text-align:left; padding-top: calc(env(safe-area-inset-top, 0px) + 11vh); padding-bottom: 1.75rem; }
   .cta-stack{ align-items: flex-start; }
-}
-
-
-@media (max-width: 1023.98px){
-  .hero-inner{ text-align:left; }
-  .cta-stack{ align-items:flex-start; }
 }
 
 </style>
@@ -812,9 +785,10 @@
     </div>
     <div class="nav-burger-text">Menu</div>
   </button>
+  <div class="nav-backdrop" id="navBackdrop"></div>
 
   <!-- DROPDOWN MENU -->
-  <div class="nav-dropdown" id="navDropdown"><div class="nav-panel">
+  <div class="nav-dropdown" id="navDropdown">
     <div class="nav-header">
       <div class="nav-title">APAXIC LLC TOWING</div>
       <button class="nav-close-btn" id="navCloseBtn" aria-label="Close menu">✕</button>
@@ -1254,12 +1228,14 @@ Ask for a quote by phone.
     // BURGER MENU LOGIC
     const navOpenBtn = document.getElementById('navOpenBtn');   // burger button
     const navCloseBtn = document.getElementById('navCloseBtn'); // X button inside dropdown
-    const navOverlay = document.getElementById('navDropdown');  // dark overlay + panel
+    const navOverlay = document.getElementById('navDropdown');  // panel box
+    const navBackdrop = document.getElementById('navBackdrop');   // full-screen click area
     const navLinks = document.querySelectorAll('.nav-link');    // all links in menu
 
     function openNav() {
       // show dropdown
       navOverlay.classList.add('active');
+      if (navBackdrop) navBackdrop.classList.add('active');
       // hide burger
       navOpenBtn.classList.add('hidden');
     }
@@ -1267,6 +1243,7 @@ Ask for a quote by phone.
     function closeNav() {
       // hide dropdown
       navOverlay.classList.remove('active');
+      if (navBackdrop) navBackdrop.classList.remove('active');
       // show burger back
       navOpenBtn.classList.remove('hidden');
     }
@@ -1298,12 +1275,8 @@ Ask for a quote by phone.
       });
     });
 
-      // Close menu on overlay background click
-    navOverlay.addEventListener('click', (e) => {
-      if (e.target === navOverlay) {
-        closeNav();
-      }
-    });
+      // backdrop click closes menu
+    if (navBackdrop){ navBackdrop.addEventListener('click', () => { closeNav(); }); }
 
     // ACCORDION LOGIC for service cards
     const cards = document.querySelectorAll('[data-accordion]');
