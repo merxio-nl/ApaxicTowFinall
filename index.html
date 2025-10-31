@@ -1088,6 +1088,26 @@
   .hero-actions { margin-top: .75rem !important; }
 }
 
+
+/* Mobile: make CTA buttons equal width and height */
+@media (max-width: 480px) {
+  .hero-actions {
+    display: flex !important;
+    gap: .8rem !important;
+    width: 100% !important;
+    justify-content: center;
+  }
+  .hero-actions a,
+  .call-btn, .wa-btn {
+    flex: 1 1 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    white-space: nowrap !important;
+    padding: .9rem 1rem !important;
+  }
+}
+
 </style>
 </head>
 
@@ -1509,7 +1529,7 @@ Ask for a quote by phone.
         Serving up to 200 miles around the Seattle area
       </div>
       <div style="margin-top:.5rem; color:#bbb;">
-        © 2025 Apaxic LLC. All rights reserved.
+        © 2025 Apaxic LLC. All rights reserved. • <a href="terms.html" style="color:#fff; text-decoration:underline;">Terms of Service &amp; Privacy Policy</a>
       </div>
       <div style="margin-top:.5rem;">
         Call: <a href="tel:+12242249240">+1 (224) 224-9240</a>
