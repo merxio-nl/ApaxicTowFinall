@@ -813,6 +813,45 @@
 @media (min-width: 768px){ .about-photo-box{ height: 200px; } }
 @media (min-width: 1024px){ .about-photo-box{ height: 220px; } }
 
+
+/* === FINAL v14: MOBILE HERO (phones only) === */
+@media (max-width: 767.98px){
+  .hero{ align-items: flex-start !important; }
+  .hero-inner{
+    padding-top: calc(env(safe-area-inset-top, 0px) + 9vh) !important;
+    padding-bottom: 2.25rem !important;
+    text-align: left !important;
+    align-items: flex-start !important;
+  }
+  .hero-title, .hero-sub{
+    text-align: left !important;
+    margin-left: 0 !important;
+    margin-right: auto !important;
+  }
+  .hero-sub{ margin-top: .35rem; line-height: 1.45; }
+
+  /* buttons row (equal width) */
+  .cta-stack{
+    width: 100%;
+    margin-top: 1rem;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: stretch !important;
+    justify-content: space-between;
+    gap: .75rem;
+  }
+  /* cover both explicit classes and generic anchors/buttons inside stack */
+  .cta-stack a, .cta-stack button, .call-btn, .wa-btn{
+    flex: 1 1 0;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 52px;
+  }
+  .call-number{ white-space: nowrap; }
+}
+
 </style>
 </head>
 
