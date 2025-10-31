@@ -1164,6 +1164,34 @@
   }
 }
 
+
+/* ===== FINAL HARD STRETCH for CTA buttons ===== */
+@media (max-width: 480px) {
+  .hero-actions {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: stretch !important;
+    gap: .5rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .hero-actions a,
+  .call-btn,
+  .wa-btn {
+    flex: 1 1 49.5% !important;
+    max-width: 49.5% !important;
+    height: 60px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    font-size: .9rem !important;
+    font-weight: 600 !important;
+    padding: 0 !important;
+    white-space: nowrap !important;
+  }
+}
+
 </style>
 </head>
 
