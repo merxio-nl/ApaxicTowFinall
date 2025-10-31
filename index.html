@@ -943,6 +943,29 @@
   }
 }
 
+
+/* === v14.6: compact yellow badge (mobile) with comfy margins === */
+@media (max-width: 767.98px){
+  /* catch common badge classnames used in hero */
+  .hero-inner .hero-badge,
+  .hero-inner .badge,
+  .hero-inner .chip,
+  .hero-inner .pill{
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    max-width: 88% !important;     /* не на всю ширину */
+    margin-left: 6vw !important;    /* не прилипает к краям */
+    margin-right: 6vw !important;
+    padding: 6px 14px !important;   /* более компактно внутри */
+    border-radius: 10px !important; /* меньшее скругление */
+    line-height: 1.1 !important;
+    font-size: 14px !important;     /* компактный шрифт */
+    font-weight: 700 !important;    /* как и было по ощущению */
+    box-sizing: border-box !important;
+  }
+}
+
 </style>
 </head>
 
