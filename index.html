@@ -1015,6 +1015,41 @@
   }
 }
 
+
+/* ===== iOS Safari & tablet polish ===== */
+@supports (height: 100dvh) {
+  .hero { min-height: 100dvh; } /* prevents initial cut-off by Safari UI */
+}
+/* Fallback for older WebKit */
+@supports not (height: 100dvh) {
+  .hero { min-height: -webkit-fill-available; }
+}
+
+/* Respect safe areas on iPhone (dynamic home bar) */
+:root {
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-top: env(safe-area-inset-top, 0px);
+}
+.hero-inner { padding-bottom: calc(3.5rem + var(--safe-bottom)); padding-top: calc(2.5rem + var(--safe-top)); }
+
+/* Tighter layout on tablets to center hero copy better in both orientations */
+@media (min-width: 768px) and (max-width: 1199.98px) {
+  .hero { align-items: center; }           /* vertically centers on iPad */
+  .hero-inner { padding: 3rem 2rem; }
+  .hero-title { font-size: clamp(1.8rem, 3vw, 2.4rem); }
+  .hero-sub { font-size: clamp(1rem, 1.6vw, 1.15rem); }
+  .hero-actions { margin-top: 1rem; }
+}
+
+/* Small phones initial viewport fix */
+@media (max-width: 390px) {
+  .hero-title { font-size: 1.6rem; }
+  .hero-sub { font-size: .95rem; }
+}
+
+/* Ensure hero background anchors properly on iPad landscape */
+.hero::before { background-attachment: scroll; background-position: center top; }
+
 </style>
 </head>
 
@@ -1437,6 +1472,7 @@ Ask for a quote by phone.
       </div>
       <div style="margin-top:.5rem; color:#bbb;">
         © 2025 Apaxic LLC. All rights reserved.
+        • <a href="terms.html" style="color:#fff; text-decoration:underline;">Terms of Service &amp; Privacy Policy</a>
       </div>
       <div style="margin-top:.5rem;">
         Call: <a href="tel:+12242249240">+1 (224) 224-9240</a>
