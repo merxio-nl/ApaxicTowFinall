@@ -284,9 +284,7 @@
     .wa-btn { background-color: #25D366; color:#fff; font-weight:600; font-size:.95rem; border-radius:.55rem; padding:.7rem 1rem; text-decoration:none; display:inline-flex; align-items:center; gap:.5rem; box-shadow:0 12px 30px rgba(0,0,0,.45); border:2px solid #138f4a; }
     .nowrap { white-space: nowrap; }
     
-@media (min-width: 1024px){
-  .hero { align-items: center; }
-  .hero-inner { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+.hero-inner { padding-top: 3.5rem; padding-bottom: 3.5rem; }
 }
 
     /* SERVICES */
@@ -707,8 +705,7 @@
 .nav-dropdown .call-btn { display:flex; flex-direction:column; align-items:center; gap:.25rem; }
 
 
-@media (min-width: 1024px){
-  .hero { align-items: center; }              /* vertical center */
+/* vertical center */
   .hero-inner { 
     padding-top: 3.5rem; 
     padding-bottom: 3.5rem; 
@@ -716,6 +713,22 @@
     flex-direction: column; 
     align-items: center;                      /* horizontal center of content */
     text-align: center;                       /* center text & buttons */
+  }
+}
+
+
+@media (min-width: 1024px){
+  .hero { 
+    align-items: center;        /* vertical center */
+    justify-content: center;    /* HORIZONTAL center of the whole block */
+  }
+  .hero-inner { 
+    padding-top: 3.5rem; 
+    padding-bottom: 3.5rem; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center;
   }
 }
 
