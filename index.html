@@ -864,6 +864,51 @@
   }
 }
 
+
+/* === MOBILE HERO FINAL LAYOUT (v14.3) === */
+@media (max-width: 767.98px){
+  .hero{ align-items: stretch !important; }
+  .hero-inner{
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;
+    min-height: 100vh !important;            /* держим контент у низа экрана */
+    padding-top: 18vh !important;            /* воздух сверху */
+    padding-bottom: 4vh !important;          /* аккуратный низ */
+    box-sizing: border-box !important;
+    text-align: left !important;
+    align-items: stretch !important;
+  }
+  .hero-title, .hero-sub{
+    margin-left: 5vw !important;
+    margin-right: 5vw !important;
+    text-align: left !important;
+  }
+  .hero-sub{ margin-top: .5rem !important; line-height: 1.45 !important; }
+
+  .cta-stack{
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: stretch !important;
+    gap: 4vw !important;                      /* расстояние между кнопками */
+    margin: 2rem 5vw 0 5vw !important;       /* отступы как на макете */
+    width: auto !important;
+  }
+  .cta-stack a, .cta-stack button, .call-btn, .wa-btn{
+    flex: 1 1 0 !important;
+    height: 54px !important;
+    display: inline-flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    border-radius: 10px !important;
+    padding: 0 !important;
+    font-weight: 600 !important;             /* толщина как просили */
+  }
+  .call-number{ white-space: nowrap !important; }
+}
+
 </style>
 </head>
 
