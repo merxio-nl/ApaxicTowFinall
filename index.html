@@ -1053,6 +1053,23 @@
   .hero-actions { margin-top: .9rem; }
 }
 
+
+/* Mobile vertical centering of hero content (Safari-safe) */
+@media (max-width: 480px) {
+  .hero { align-items: center !important; }              /* center vertically */
+  .hero-inner { 
+    transform: none !important;                          /* cancel previous lift */
+    padding-top: calc(1.75rem + var(--safe-top));
+    padding-bottom: calc(1.25rem + var(--safe-bottom));  /* keep away from home bar */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .8rem;
+  }
+  .hero-actions { margin-top: .6rem; }
+}
+
 </style>
 </head>
 
