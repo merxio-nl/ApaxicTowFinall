@@ -752,6 +752,31 @@
   .cta-stack{ align-items: center; }
 }
 
+
+/* Mobile/Tablet default: left-aligned hero */
+.hero-inner { text-align: left; }
+.hero-title, .hero-sub { margin-left: 0; margin-right: auto; }
+.cta-stack { align-items: flex-start; }
+
+
+@media (min-width: 1024px){
+  .hero{ display:flex; align-items:center; justify-content:center; }
+  .hero-inner{ 
+    width: min(100%, 980px);
+    display:flex; 
+    flex-direction:column; 
+    align-items:center; 
+    text-align:center;
+    margin: 0 auto;
+  }
+  .hero-title, .hero-sub { 
+    max-width: 900px; 
+    margin-left:auto; 
+    margin-right:auto; 
+  }
+  .cta-stack{ align-items: center; }
+}
+
 </style>
 </head>
 
@@ -1250,6 +1275,13 @@ Ask for a quote by phone.
           }
         }
       });
+    });
+
+      // Close menu on overlay background click
+    navOverlay.addEventListener('click', (e) => {
+      if (e.target === navOverlay) {
+        closeNav();
+      }
     });
 
     // ACCORDION LOGIC for service cards
