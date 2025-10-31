@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Apaxic LLC Towing | Bonney Lake, WA</title>
   <meta name="description" content="Local towing and roadside assistance. Based in Bonney Lake, WA. Serving up to 200 miles around the Seattle area. Call now: +1 (224) 224-9240." />
 
@@ -765,6 +765,13 @@
 
 
 /* Phones & tablets: left-aligned + higher hero content */
+
+/* Desktop centering for hero */
+@media (min-width: 1024px){
+  .hero{ align-items: center; }
+  .hero-inner{ text-align: center; padding-top: 0; padding-bottom: 0; }
+  .cta-stack{ align-items: center; justify-content: center; }
+}
 @media (max-width: 1023.98px){
   .hero{ align-items: flex-start; }
   .hero-inner{ text-align:left; padding-top: calc(env(safe-area-inset-top, 0px) + 11vh); padding-bottom: 1.75rem; }
@@ -814,207 +821,52 @@
 @media (min-width: 1024px){ .about-photo-box{ height: 220px; } }
 
 
-/* === FINAL v14: MOBILE HERO (phones only) === */
-@media (max-width: 767.98px){
-  .hero{ align-items: flex-start !important; }
-  .hero-inner{
-    padding-top: calc(env(safe-area-inset-top, 0px) + 9vh) !important;
-    padding-bottom: 2.25rem !important;
-    text-align: left !important;
-    align-items: flex-start !important;
-  }
-  .hero-title, .hero-sub{
-    text-align: left !important;
-    margin-left: 0 !important;
-    margin-right: auto !important;
-  }
-  .hero-sub{ margin-top: .35rem; line-height: 1.45; }
 
-  /* buttons row (equal width) */
-  .cta-stack{
-    width: 100%;
-    margin-top: 1rem;
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: stretch !important;
-    justify-content: space-between;
-    gap: .75rem;
-  }
-  /* cover both explicit classes and generic anchors/buttons inside stack */
-  .cta-stack a, .cta-stack button, .call-btn, .wa-btn{
-    flex: 1 1 0;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    height: 52px;
-  }
-  .call-number{ white-space: nowrap; }
-}
-
-
-/* === MOBILE HERO SPACING ADJUSTMENT (v14.1) === */
-@media (max-width: 767.98px){
-  .hero-inner{
-    padding-top: calc(env(safe-area-inset-top, 0px) + 5vh) !important;
-    padding-bottom: 6vh !important;
-  }
-  .cta-stack{
-    margin-top: 1.75rem !important;
-  }
-}
-
-
-/* === MOBILE HERO FINAL LAYOUT (v14.3) === */
-@media (max-width: 767.98px){
-  .hero{ align-items: stretch !important; }
-  .hero-inner{
-    display: flex !important;
-    flex-direction: column !important;
+/* ===== FINAL MOBILE SAFETY OVERRIDES (requested) ===== */
+@media (max-width: 1023.98px) {
+  .hero { 
+    align-items: flex-end !important;
     justify-content: flex-end !important;
-    min-height: 100vh !important;            /* держим контент у низа экрана */
-    padding-top: 18vh !important;            /* воздух сверху */
-    padding-bottom: 4vh !important;          /* аккуратный низ */
-    box-sizing: border-box !important;
-    text-align: left !important;
-    align-items: stretch !important;
+    padding-bottom: 2.25rem !important;
   }
-  .hero-title, .hero-sub{
-    margin-left: 5vw !important;
-    margin-right: 5vw !important;
+  .hero-title {
+    margin: 0 0 .75rem 0 !important;
+    text-align: left !important;
+    width: auto !important;
+  }
+  .hero-sub {
+    margin-bottom: 1rem !important;
     text-align: left !important;
   }
-  .hero-sub{ margin-top: .5rem !important; line-height: 1.45 !important; }
-
-  .cta-stack{
+  .cta-stack {
     display: flex !important;
     flex-direction: row !important;
-    justify-content: space-between !important;
-    align-items: stretch !important;
-    gap: 4vw !important;                      /* расстояние между кнопками */
-    margin: 2rem 5vw 0 5vw !important;       /* отступы как на макете */
-    width: auto !important;
-  }
-  .cta-stack a, .cta-stack button, .call-btn, .wa-btn{
-    flex: 1 1 0 !important;
-    height: 54px !important;
-    display: inline-flex !important;
-    justify-content: center !important;
     align-items: center !important;
+    justify-content: flex-start !important;
+    gap: .8rem !important;
+    width: 100% !important;
+  }
+  .call-btn, .wa-btn {
+    width: 48% !important;
+    max-width: 290px !important;
     text-align: center !important;
-    border-radius: 10px !important;
-    padding: 0 !important;
-    font-weight: 600 !important;             /* толщина как просили */
   }
-  .call-number{ white-space: nowrap !important; }
-}
-
-
-/* === v14.4: Mobile safe-area & bottom spacing fix (iOS Safari) === */
-@media (max-width: 767.98px){
-  .hero-inner{
-    /* keep content near bottom, but never under Safari bottom bar */
-    min-height: 100vh !important;
-    padding-top: 14vh !important; /* немного меньше воздуха сверху */
-    padding-bottom: calc(7vh + env(safe-area-inset-bottom, 16px)) !important;
+  .call-btn { 
+    display: flex !important; 
+    flex-direction: column !important; 
+    align-items: center !important; 
+    gap: .25rem !important;
+    padding: .8rem 1rem !important;
+    font-size: .95rem !important;
   }
-  .cta-stack{
-    margin-top: 1.25rem !important;
-  }
-}
-
-
-/* === v14.5: raise content slightly + compact badge width on mobile === */
-@media (max-width: 767.98px){
-  .hero-inner{
-    /* push content a bit higher: add more bottom spacing while respecting safe area */
-    padding-bottom: calc(8.5vh + env(safe-area-inset-bottom, 16px)) !important;
-  }
-  /* Make the yellow pill not stretch full width */
-  .hero-inner .hero-badge,
-  .hero-inner .badge,
-  .hero-inner .chip,
-  .hero-inner .pill{
+  .call-btn .call-number { font-size: 1.05rem !important; }
+  .site-badge {
     display: inline-block !important;
-    max-width: 90% !important;
-    width: auto !important;
-    margin-left: 5vw !important;
-    margin-right: 5vw !important;
+    margin: 0 0 .75rem 0 !important;
+    max-width: calc(100% - 56px) !important;
   }
 }
-
-
-/* === v14.6: compact yellow badge (mobile) with comfy margins === */
-@media (max-width: 767.98px){
-  /* catch common badge classnames used in hero */
-  .hero-inner .hero-badge,
-  .hero-inner .badge,
-  .hero-inner .chip,
-  .hero-inner .pill{
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    max-width: 88% !important;     /* не на всю ширину */
-    margin-left: 6vw !important;    /* не прилипает к краям */
-    margin-right: 6vw !important;
-    padding: 6px 14px !important;   /* более компактно внутри */
-    border-radius: 10px !important; /* меньшее скругление */
-    line-height: 1.1 !important;
-    font-size: 14px !important;     /* компактный шрифт */
-    font-weight: 700 !important;    /* как и было по ощущению */
-    box-sizing: border-box !important;
-  }
-}
-
-
-/* === v14.7: force badge to content-width on mobile (robust selector) === */
-@media (max-width: 767.98px){
-  .hero .hero-inner :is(.hero-badge, .badge, .chip, .pill, .label, .location, [class*="badge"], [class*="pill"], [class*="chip"], [class*="label"], [class*="tag"]){
-    display: inline-flex !important;
-    width: auto !important;
-    max-width: 88% !important;
-    align-self: flex-start !important;
-    margin-left: 5vw !important;
-    margin-right: auto !important;
-    padding: 6px 14px !important;
-    border-radius: 10px !important;
-    line-height: 1.1 !important;
-    font-size: 14px !important;
-    box-sizing: border-box !important;
-  }
-}
-
-
-/* === v14.9 FINAL: brand-badge (mobile) — robust, semantic, overridable only deliberately === */
-@media (max-width: 767.98px){
-  .brand-badge{
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: auto !important;
-    max-width: 88% !important;
-    margin-left: 5vw !important;
-    margin-right: auto !important;
-    padding: 6px 14px !important;
-    border-radius: 10px !important;
-    line-height: 1.1 !important;
-    font-size: 14px !important;
-    font-weight: 700 !important;
-    box-sizing: border-box !important;
-  }
-}
-
-
-/* === v15.0: Lift CTA row on mobile === */
-@media (max-width: 767.98px){
-  .hero-inner{
-    padding-bottom: calc(5.75vh + env(safe-area-inset-bottom, 12px)) !important; /* was larger; lift buttons */
-  }
-  .hero-inner :is(.cta-stack,.cta-row,.cta,.btn-row){
-    margin-top: 12px !important; /* tighter spacing above buttons */
-  }
-}
-
+/* ===== End mobile overrides ===== */
 </style>
 </head>
 
@@ -1530,87 +1382,6 @@ Ask for a quote by phone.
       });
     });
   </script>
-
-
-<script>
-// v14.8: Force compact hero badge on mobile (robust text-based fallback)
-(function(){
-  function compactBadge(){
-    try{
-      var hero = document.querySelector('.hero .hero-inner');
-      if(!hero) return;
-      var nodes = hero.querySelectorAll('div,span,a,button');
-      for(var i=0;i<nodes.length;i++){
-        var el = nodes[i];
-        var txt = (el.textContent||'').trim();
-        if(/APAXIC\s+LLC\s+TOWING/i.test(txt) && /BONNEY\s+LAKE/i.test(txt)){
-          var s = el.style;
-          s.display = 'inline-flex';
-          s.width = 'auto';
-          s.maxWidth = '88%';
-          s.alignSelf = 'flex-start';
-          s.marginLeft = '5vw';
-          s.marginRight = 'auto';
-          s.padding = '6px 14px';
-          s.borderRadius = '10px';
-          s.lineHeight = '1.1';
-          s.fontSize = '14px';
-          s.boxSizing = 'border-box';
-          break;
-        }
-      }
-    }catch(e){ /* noop */ }
-  }
-  if (document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', compactBadge);
-  } else {
-    compactBadge();
-  }
-  // also re-apply after orientation or resize (iOS Safari quirks)
-  window.addEventListener('resize', compactBadge);
-})();
-</script>
-
-
-<script>
-/* v14.9 FINAL: attach semantic class to hero badge + keep it applied on dynamic changes */
-(function(){
-  function isHeroBadge(el){
-    if(!el) return false;
-    var t = (el.textContent||'').replace(/\s+/g,' ').trim().toUpperCase();
-    return t.includes('APAXIC LLC TOWING') && t.includes('BONNEY LAKE');
-  }
-  function mark(){
-    var root = document.querySelector('.hero .hero-inner') || document;
-    var candidates = root.querySelectorAll('div,span,a,button');
-    for (var i=0;i<candidates.length;i++){
-      var el = candidates[i];
-      if (isHeroBadge(el)){
-        if (!el.classList.contains('brand-badge')) el.classList.add('brand-badge');
-        // remove inline width:100% if present from previous libs
-        var s = el.style;
-        if (s && (s.width === '100%' || s.display === 'block')){
-          s.width = 'auto';
-          s.display = 'inline-flex';
-        }
-        break;
-      }
-    }
-  }
-  function ready(fn){
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn);
-    else fn();
-  }
-  ready(mark);
-  window.addEventListener('resize', mark);
-  // Keep it in case some script re-renders hero
-  var mo = new MutationObserver(function(){ mark(); });
-  ready(function(){
-    var hero = document.querySelector('.hero') || document.body;
-    if(hero) mo.observe(hero, {childList:true, subtree:true});
-  });
-})();
-</script>
 
 </body>
 </html>
