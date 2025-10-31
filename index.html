@@ -1070,6 +1070,24 @@
   .hero-actions { margin-top: .6rem; }
 }
 
+
+/* ===== HARD MOBILE FIX (iOS Safari safe) ===== */
+@media (max-width: 480px) {
+  .hero { 
+    min-height: 100svh !important;                      /* small viewport height ignores Safari UI */
+    display: flex;
+    align-items: center !important;
+  }
+  .hero-inner { 
+    transform: translateY(-14vh) !important;            /* strong upward shift */
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px)) !important;
+    padding-top: calc(1.5rem + env(safe-area-inset-top, 0px)) !important;
+    text-align: center !important;
+    align-items: center !important;
+  }
+  .hero-actions { margin-top: .75rem !important; }
+}
+
 </style>
 </head>
 
