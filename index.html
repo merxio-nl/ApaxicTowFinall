@@ -1004,6 +1004,17 @@
   }
 }
 
+
+/* === v15.0: Lift CTA row on mobile === */
+@media (max-width: 767.98px){
+  .hero-inner{
+    padding-bottom: calc(5.75vh + env(safe-area-inset-bottom, 12px)) !important; /* was larger; lift buttons */
+  }
+  .hero-inner :is(.cta-stack,.cta-row,.cta,.btn-row){
+    margin-top: 12px !important; /* tighter spacing above buttons */
+  }
+}
+
 </style>
 </head>
 
