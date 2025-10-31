@@ -1108,6 +1108,34 @@
   }
 }
 
+
+/* ===== HARD FIX: make mobile CTA buttons identical in size ===== */
+@media (max-width: 480px) {
+  .hero-actions {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: stretch !important;
+    gap: .8rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .hero-actions a,
+  .call-btn,
+  .wa-btn {
+    flex: 1 1 50% !important;
+    max-width: 50% !important;
+    height: 52px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    padding: 0 !important;
+    white-space: nowrap !important;
+  }
+}
+
 </style>
 </head>
 
