@@ -984,6 +984,26 @@
   }
 }
 
+
+/* === v14.9 FINAL: brand-badge (mobile) — robust, semantic, overridable only deliberately === */
+@media (max-width: 767.98px){
+  .brand-badge{
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: auto !important;
+    max-width: 88% !important;
+    margin-left: 5vw !important;
+    margin-right: auto !important;
+    padding: 6px 14px !important;
+    border-radius: 10px !important;
+    line-height: 1.1 !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    box-sizing: border-box !important;
+  }
+}
+
 </style>
 </head>
 
@@ -1499,6 +1519,87 @@ Ask for a quote by phone.
       });
     });
   </script>
+
+
+<script>
+// v14.8: Force compact hero badge on mobile (robust text-based fallback)
+(function(){
+  function compactBadge(){
+    try{
+      var hero = document.querySelector('.hero .hero-inner');
+      if(!hero) return;
+      var nodes = hero.querySelectorAll('div,span,a,button');
+      for(var i=0;i<nodes.length;i++){
+        var el = nodes[i];
+        var txt = (el.textContent||'').trim();
+        if(/APAXIC\s+LLC\s+TOWING/i.test(txt) && /BONNEY\s+LAKE/i.test(txt)){
+          var s = el.style;
+          s.display = 'inline-flex';
+          s.width = 'auto';
+          s.maxWidth = '88%';
+          s.alignSelf = 'flex-start';
+          s.marginLeft = '5vw';
+          s.marginRight = 'auto';
+          s.padding = '6px 14px';
+          s.borderRadius = '10px';
+          s.lineHeight = '1.1';
+          s.fontSize = '14px';
+          s.boxSizing = 'border-box';
+          break;
+        }
+      }
+    }catch(e){ /* noop */ }
+  }
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', compactBadge);
+  } else {
+    compactBadge();
+  }
+  // also re-apply after orientation or resize (iOS Safari quirks)
+  window.addEventListener('resize', compactBadge);
+})();
+</script>
+
+
+<script>
+/* v14.9 FINAL: attach semantic class to hero badge + keep it applied on dynamic changes */
+(function(){
+  function isHeroBadge(el){
+    if(!el) return false;
+    var t = (el.textContent||'').replace(/\s+/g,' ').trim().toUpperCase();
+    return t.includes('APAXIC LLC TOWING') && t.includes('BONNEY LAKE');
+  }
+  function mark(){
+    var root = document.querySelector('.hero .hero-inner') || document;
+    var candidates = root.querySelectorAll('div,span,a,button');
+    for (var i=0;i<candidates.length;i++){
+      var el = candidates[i];
+      if (isHeroBadge(el)){
+        if (!el.classList.contains('brand-badge')) el.classList.add('brand-badge');
+        // remove inline width:100% if present from previous libs
+        var s = el.style;
+        if (s && (s.width === '100%' || s.display === 'block')){
+          s.width = 'auto';
+          s.display = 'inline-flex';
+        }
+        break;
+      }
+    }
+  }
+  function ready(fn){
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn);
+    else fn();
+  }
+  ready(mark);
+  window.addEventListener('resize', mark);
+  // Keep it in case some script re-renders hero
+  var mo = new MutationObserver(function(){ mark(); });
+  ready(function(){
+    var hero = document.querySelector('.hero') || document.body;
+    if(hero) mo.observe(hero, {childList:true, subtree:true});
+  });
+})();
+</script>
 
 </body>
 </html>
