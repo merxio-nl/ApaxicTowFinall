@@ -777,6 +777,18 @@
   .cta-stack{ align-items: center; }
 }
 
+
+/* Phones & tablets: push hero content higher */
+@media (max-width: 1023.98px){
+  .hero{ align-items: flex-start; } /* anchor to top */
+  .hero-inner{
+    padding-top: calc( env(safe-area-inset-top, 0px) + 12vh );
+    padding-bottom: 1.75rem; /* less bottom padding so CTA not too low */
+  }
+  /* keep left alignment */
+  .cta-stack{ align-items: flex-start; }
+}
+
 </style>
 </head>
 
