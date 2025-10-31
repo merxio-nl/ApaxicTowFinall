@@ -1029,6 +1029,16 @@
   .hero-topline { margin-left: auto; margin-right: auto; display: inline-block; }
 }
 
+
+/* Force absolute centering of the yellow topline on desktop */
+@media (min-width: 992px) {
+  .hero-topline { 
+    display: table;
+    margin-left: auto !important; 
+    margin-right: auto !important; 
+  }
+}
+
 </style>
 </head>
 
